@@ -9,6 +9,10 @@ import { CarbonFootprintComponent } from './component/carbon-footprint/carbon-fo
 import { CarbonFootprintFormComponent } from './component/carbon-footprint-form/carbon-footprint-form.component';
 import { CarbonFootprintResultComponent } from './component/carbon-footprint-result/carbon-footprint-result.component';
 import {CarbonFootprintComputeService} from "./service/carbon-footprint-compute.service";
+import { AuthComponent } from './component/auth/auth.component';
+import {FormsModule} from "@angular/forms";
+import { MenuComponent } from './component/header/menu/menu.component';
+import { UpdateComponent } from './component/update/update.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +21,15 @@ import {CarbonFootprintComputeService} from "./service/carbon-footprint-compute.
     FooterComponent,
     CarbonFootprintComponent,
     CarbonFootprintFormComponent,
-    CarbonFootprintResultComponent
+    CarbonFootprintResultComponent,
+    AuthComponent,
+    MenuComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [CarbonFootprintComputeService],
   bootstrap: [AppComponent]

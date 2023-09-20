@@ -1,0 +1,16 @@
+<form #user="ngForm" (ngSubmit)="sginIn(user.value)" >
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email"  name="pseudo" ngModel />
+    <label class="form-label" >Email</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" name="password" ngModel />
+    <label class="form-label" >Mot de passe</label>
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit">Se connecter</button>
+</form>
