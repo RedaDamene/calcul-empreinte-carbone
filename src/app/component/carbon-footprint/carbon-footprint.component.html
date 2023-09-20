@@ -3,9 +3,10 @@
 <div class="conso">
   <p>Information consommation :</p>
   <ul>
-    <li [ngClass]="{'haute-distance': (distanceKm > 500), 'basse-distance': (distanceKm < 100)}">Distance parcourus : {{distanceKm | number:'1.0-0'}} </li>
-    <li [ngStyle]="{'color':(consommationPour100Km < 4) ? 'green' : (consommationPour100Km > 7) ? 'red' : 'black' }">Consommation / 100km : {{ consommationPour100Km | number:'1.0-2'}}</li>
-    <p>Consommation totale est de {{consommationTotale | number:'1.0-2'}}</p>
+    <li [ngClass]="{'haute-distance': (resumeVoyages.distanceKm > 500), 'basse-distance': (resumeVoyages.distanceKm < 100)}">Distance parcourus : {{resumeVoyages.distanceKm | number:'1.0-0'}} </li>
+    <li [ngStyle]="{'color':(resumeVoyages.consommationPour100Km < 4) ? 'green' : (resumeVoyages.consommationPour100Km > 7) ? 'red' : 'black' }">Consommation / 100km : {{ resumeVoyages.consommationPour100Km | number:'1.0-2'}}</li>
+    <li>Consommation totale est de {{consommationTotale | number:'1.0-2'}}</li>
+    <li>Quantité CO2 : {{ resumeVoyages.quantiteCO2Totale | number:'1.0-2'}}</li>
   </ul>
   <span *ngIf="consommationTotale > 7">Attention, votre consommation est élevée</span>
   <span *ngIf="consommationTotale < 4">Félicitations, votre consommation est faible</span><br>
@@ -14,23 +15,25 @@
   </button>
 </div>
 <div class="table-voyages">
+  <div class="ajouter-voyage">
+    <button (click)="addTravel($event)" type="button">
+      Générer
+    </button>
+  </div>
   <table>
     <tr>
       <th>Distance (km)</th>
       <th>Consommation (100/km)</th>
+      <th>Quantité CO2</th>
     </tr>
 
     <tr *ngFor="let voyage of voyages">
       <td>{{voyage.distanceKm | number:'1.0-0'}}</td>
       <td>{{voyage.consommationPour100Km | number:'1.0-0'}}</td>
+      <td>{{voyage.co2 | number:'1.0-0'}}</td>
     </tr>
   </table>
 </div>
 
-<div class="ajouter-voyage">
-  <button (click)="addTravel($event)" type="button">
-    Générer
-  </button>
-</div>
 <app-carbon-footprint-form></app-carbon-footprint-form>
 <app-carbon-footprint-result></app-carbon-footprint-result>
